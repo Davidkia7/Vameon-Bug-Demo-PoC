@@ -1,7 +1,7 @@
 # Token Vulnerability in transferWithFee
 
-## Brief Description
-The `transferWithFee` function in the Vameon contract does not verify whether the sender's balance is sufficient to cover `value` + `fee` before the transfer execution begins. This causes the transaction to fail with an `ERC20InsufficientBalance` error in the middle of execution, without giving any clear advance warning to the user.
+## Brief DescriptionThe 
+`transferWithFee` function in the Vameon contract does not verify whether the sender's balance is sufficient to cover `value` + `fee` before the transfer execution begins. This causes the transaction to fail with an `ERC20InsufficientBalance` error in the middle of execution, without giving any clear advance warning to the user. If the sender's balance is insufficient for any of the transfers, the internal _transfer function of OpenZeppelin ERC-20 will trigger an ERC20InsufficientBalance error, causing the entire transaction to be reverted. While there is no loss of value due to Solidity's revert mechanism, the lack of an advance check leads to unexpected logic execution, which can be confusing for users or applications that rely on this contract.
 
 ## Vulnerability Details
 
