@@ -69,7 +69,7 @@ In the **"Deploy & Run Transactions"** tab:
 From account 0 (initial sender):
 - Transfer tokens to the `TestVameon` contract.
 - In the `Vameon` contract, call the `transfer` function with the following parameters:
-- `to`: The `UnrestrictedFeeDrain` address.
+- `to`: The `TestVameon` address.
 - `value`: **100**
 - Verify the balance on `TestVameon` by calling the `getBalance` function. The balance that appears should be **100**.
 
